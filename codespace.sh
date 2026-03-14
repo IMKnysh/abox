@@ -59,17 +59,4 @@ kubectl apply --kubeconfig /home/codespace/.kube/config --server-side -f https:/
 log "Applying gatewayapi/Gateway.yaml..."
 kubectl apply --kubeconfig /home/codespace/.kube/config -f gatewayapi/Gateway.yaml
 
-# Wait for LoadBalancer IP
-log "Waiting for LoadBalancer IP..."
-for i in $(seq 1 30); do
-  LB_IP=$(kubectl get svc -n agentgateway-system \
-    -o jsonpath='{.items[?(@.spec.type=="LoadBalancer")].status.loadBalancer.ingress[0].ip}' 2>/dev/null || true)
-  if [[ -n "$LB_IP" ]]; then
-    log "LoadBalancer IP: $LB_IP"
-    break
-  fi
-  log "Attempt $i/30 — not ready yet, retrying in 5s..."
-  sleep 5
-done
-
 log "=== setup complete ==="
