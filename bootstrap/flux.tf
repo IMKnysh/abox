@@ -71,7 +71,7 @@ resource "kubectl_manifest" "rset" {
       - kind: ResourceSetInputProvider
         name: releases-image
       resources:
-      - apiVersion: source.toolkit.fluxcd.io/v1beta2
+      - apiVersion: source.toolkit.fluxcd.io/v1
         kind: OCIRepository
         metadata:
           name: releases
