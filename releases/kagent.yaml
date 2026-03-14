@@ -36,6 +36,8 @@ spec:
   install:
     createNamespace: true
   values:
+    kagent-tools:
+      nameOverride: mcp
     controller:
       image:
         tag: 0.7.23
@@ -58,8 +60,6 @@ spec:
       istio-policy-agent:
         enabled: false
       istio-manager-agent:
-        enabled: false
-      argo-rollouts-conversion-agent:
         enabled: false
     providers:
       default: openAI
