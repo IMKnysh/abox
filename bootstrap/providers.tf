@@ -22,6 +22,10 @@ terraform {
       source  = "gavinbunney/kubectl"
       version = ">= 1.14"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = ">= 3.0"
+    }
   }
 }
 provider "flux" {
