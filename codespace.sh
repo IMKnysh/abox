@@ -52,10 +52,4 @@ nohup /tmp/cloud-provider-kind > /tmp/cloud-provider-kind.log 2>&1 &
 log "cloud-provider-kind started (pid $!)"
 
 
-helm upgrade -i kagent-crd oci://ghcr.io/kagent-dev/kagent/helm/kagent-crds --create-namespace -n kagent
-helm upgrade -i kagent oci://ghcr.io/kagent-dev/kagent/helm/kagent --create-namespace  -n kagent \
---set tools.querydoc.enabled=false --set agents.cilium-policy-agent.enabled=false --set agents.cilium-manager-agent.enabled=false  \
---set agents.cilium-debug-agent.enabled=false --set agents.promql-agent.enabled=false --set agents.istio-agent.enabled=false \
---set agents.istio-policy-agent.enabled=false --set agents.istio-manager-agent.enabled=false --set providers.openAI.apiKey=OPENAI_API_KEY
-
 log "=== setup complete ==="
