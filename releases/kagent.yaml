@@ -36,8 +36,6 @@ spec:
   install:
     createNamespace: true
   values:
-    kagent-tools:
-      nameOverride: mcp
     controller:
       image:
         tag: 0.7.23
