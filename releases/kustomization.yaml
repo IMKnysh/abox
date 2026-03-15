@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - kgateway.yaml
   - kagent.yaml
-  - kagent-httproute.yaml
