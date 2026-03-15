@@ -25,6 +25,7 @@ spec:
             value: "0.7.23"
         target:
           labelSelector: app.kubernetes.io/name=kagent
+  releaseName: kagent
   dependsOn:
     - name: kagent-crds
       namespace: flux-system

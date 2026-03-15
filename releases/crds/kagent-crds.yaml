@@ -16,6 +16,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
+  releaseName: kagent-crds
   targetNamespace: kagent
   chartRef:
     kind: OCIRepository
