@@ -25,11 +25,11 @@ down:
 
 push:
 	@git fetch a-box --tags --force
-	$(eval TAG=$(shell git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"))
+	$(eval TAG=$(shell git tag --list 'v*' | sort -V | tail -1 | sed 's/^v//' || echo "0.0.0"))
 	$(eval MAJOR=$(shell echo $(TAG) | cut -d. -f1))
 	$(eval MINOR=$(shell echo $(TAG) | cut -d. -f2))
 	$(eval PATCH=$(shell echo $(TAG) | cut -d. -f3))
-	$(eval NEW_TAG=$(MAJOR).$(MINOR).$(shell echo $$(($(PATCH)+1))))
+	$(eval NEW_TAG=v$(MAJOR).$(MINOR).$(shell echo $$(($(PATCH)+1))))
 	@git tag $(NEW_TAG)
 	@git push a-box $(NEW_TAG)
 	@echo "Tagged and pushed $(NEW_TAG)"
