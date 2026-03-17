@@ -32,7 +32,8 @@ jobs:
         id: push
         run: |
           TAG=${GITHUB_REF_NAME#v}
-          digest=$(flux push artifact oci://ghcr.io/${{ github.repository }}/releases:${TAG} \
+          REPO=${GITHUB_REPOSITORY,,}
+          digest=$(flux push artifact oci://ghcr.io/${REPO}/releases:${TAG} \
             --path="./releases" \
             --source="${{ github.repositoryUrl }}" \
             --revision="${{ github.ref_name }}@sha1:${{ github.sha }}" \
@@ -42,6 +43,7 @@ jobs:
 
       - name: Tag artifact
         run: |
+          REPO=${GITHUB_REPOSITORY,,}
           flux tag artifact \
-            oci://ghcr.io/${{ github.repository }}/releases:${{ steps.push.outputs.tag }}@${{ steps.push.outputs.digest }} \
+            oci://ghcr.io/${REPO}/releases:${{ steps.push.outputs.tag }}@${{ steps.push.outputs.digest }} \
             --tag latest
