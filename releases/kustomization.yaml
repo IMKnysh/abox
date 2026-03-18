@@ -5,3 +5,4 @@ resources:
   - agentgateway.yaml
   - kagent.yaml
   - kubernetes-replicator.yaml
+  - agents.yaml
