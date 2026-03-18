@@ -9,8 +9,8 @@ metadata:
   annotations:
     replicator.v1.mittwald.de/replicate-to: "kagent, agentgateway-system"
 data:
-  GOOGLE_API_KEY: "${base64encode(var.google_api_key)}"
-  OPENAI_API_KEY: "${base64encode(var.openai_api_key)}"
-  BEDROCK_API_KEY: "${base64encode(var.bedrock_api_key)}"
+  GOOGLE_API_KEY: "${base64encode(var.GOOGLE_API_KEY)}"
+  OPENAI_API_KEY: "${base64encode(var.OPENAI_API_KEY)}"
+  BEDROCK_API_KEY: "${base64encode(var.BEDROCK_API_KEY)}"
 YAML
 }
