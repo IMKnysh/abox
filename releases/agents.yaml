@@ -1,0 +1,58 @@
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: basic-adk-agent
+  namespace: kagent
+spec:
+  description: This agent can do anything.
+  type: BYO
+  byo:
+    deployment:
+      image: ghcr.io/imknysh/abox-basic-agent:latest
+      env:
+        - name: GOOGLE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ai-providers-api-keys
+              key: GOOGLE_API_KEY
+---
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: k8s-a2a-agent
+  namespace: kagent
+spec:
+  description: An example A2A agent that knows how to use Kubernetes tools.
+  type: Declarative
+  declarative:
+    modelConfig: default-model-config
+    systemMessage: |-
+        You are an expert Kubernetes agent that uses tools to help users.
+    tools:
+      - type: McpServer
+        mcpServer:
+          name: kagent-tool-server
+          kind: RemoteMCPServer
+          toolNames:
+          - k8s_get_resources
+          - k8s_get_available_api_resources
+    a2aConfig:
+      skills:
+      - id: get-resources-skill
+        name: Get Resources
+        description: Get resources in the Kubernetes cluster
+        inputModes:
+        - text
+        outputModes:
+        - text
+        tags:
+        - k8s
+        - resources
+        examples:
+        - "Get all resources in the Kubernetes cluster"
+        - "Get the pods in the default namespace"
+        - "Get the services in the istio-system namespace"
+        - "Get the deployments in the istio-system namespace"
+        - "Get the jobs in the istio-system namespace"
+        - "Get the cronjobs in the istio-system namespace"
+        - "Get the statefulsets in the istio-system namespace"
