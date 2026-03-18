@@ -1,4 +1,4 @@
-# Basic Agent
+# Basic Agent template for local development
 
 This is a basic agent that can used to test KAgent BYO agent with ADK.
 
