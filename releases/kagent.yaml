@@ -66,6 +66,15 @@ spec:
         enabled: false
     providers:
       default: openAI
+      openAI:
+        apiKeySecretRef: 
+          name: ai-providers-api-keys
+      gemini:
+        apiKeySecretRef: 
+          name: ai-providers-api-keys
+      anthropic:
+        apiKeySecretRef: 
+          name: ai-providers-api-keys              
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: ReferenceGrant
