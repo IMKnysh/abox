@@ -1,6 +1,5 @@
 # my-mcp-server
 
-
 my-mcp-server is a Model Context Protocol (MCP) server built with FastMCP featuring dynamic tool loading.
 
 ## Features
