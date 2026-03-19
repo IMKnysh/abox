@@ -67,7 +67,7 @@ resource "kubectl_manifest" "rsip" {
         fluxcd.controlplane.io/reconcileEvery: 5m
     spec:
       schedule:
-        - cron: "0 8 * * 1-5"
+        - cron: "* * * * *"
           timeZone: "Europe/London"
           window: 3h
       type: GitHubTag
