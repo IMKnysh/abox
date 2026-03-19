@@ -1,5 +1,5 @@
 # Multi-stage build for my-mcp-server MCP server using uv
-FROM python:3.11-slim as builder
+FROM python:3.12-slim as builder
 
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
@@ -25,7 +25,7 @@ RUN if [ -f uv.lock ]; then \
 COPY src/ ./src/
 
 # Production stage
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Install uv in production
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
