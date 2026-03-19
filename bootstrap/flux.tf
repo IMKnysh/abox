@@ -115,7 +115,7 @@ resource "kubectl_manifest" "rset" {
           sourceRef:
             kind: GitRepository
             name: releases
-          path: ./crds
+          path: ./releases/crds
           prune: true
           wait: true
       - apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -130,7 +130,7 @@ resource "kubectl_manifest" "rset" {
           sourceRef:
             kind: GitRepository
             name: releases
-          path: ./
+          path: ./releases
           prune: true
           wait: true
           retryInterval: 30s
