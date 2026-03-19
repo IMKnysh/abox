@@ -73,7 +73,7 @@ resource "kubectl_manifest" "rsip" {
       type: GitHubTag
       url: ${var.git_repository}
       filter:
-        includeTag: "^\\d+\\.\\d+\\.\\d+$"
+        includeTag: "^v\\d+\\.\\d+\\.\\d+$"
         limit: 1     
   YAML
 }
