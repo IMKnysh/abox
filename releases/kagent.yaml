@@ -67,7 +67,12 @@ spec:
     providers:
       default: openAI
       openAI:
-        apiKey: OPENAI_API_KEY
+        apiKeySecretRef: ai-providers-api-keys
+      gemini:
+        apiKeySecretRef: ai-providers-api-keys
+        model: gemini-2.5-flash
+      anthropic:
+        apiKeySecretRef: ai-providers-api-keys              
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: ReferenceGrant
@@ -109,3 +114,40 @@ spec:
     - name: kagent-ui
       namespace: kagent
       port: 8080
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: bedrock-config
+  namespace: kagent
+spec:
+  apiKeySecret: ai-providers-api-keys
+  apiKeySecretKey: BEDROCK_API_KEY
+  model: openai.gpt-oss-20b-1:0
+  provider: OpenAI
+  openAI:
+    baseUrl: "https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1"
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: gemini-default-model-config
+  namespace: kagent
+spec:
+  apiKeySecret: ai-providers-api-keys
+  apiKeySecretKey: GOOGLE_API_KEY
+  model: gemini-2.5-flash
+  provider: Gemini
+  gemini: {} 
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: openai-default-model-config
+  namespace: kagent
+spec:
+  apiKeySecret: ai-providers-api-keys
+  apiKeySecretKey: OPENAI_API_KEY
+  model: gpt-4o-mini
+  provider: OpenAI
+  openAI: {}     
