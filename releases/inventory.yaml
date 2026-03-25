@@ -31,3 +31,6 @@ spec:
   values:
     config:
       existingSecret: ai-inventory-secret
+    database:
+      postgres:
+         bundled: true  
