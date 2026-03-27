@@ -12,6 +12,19 @@ spec:
   interval: 1h
   url: https://qdrant.github.io/qdrant-helm
 ---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: qdrant
+  namespace: qdrant
+spec:
+  interval: 10m
+  chart: qdrant
+  sourceRef:
+    kind: HelmRepository
+    name: qdrant
+  version: "*"
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -21,7 +34,7 @@ spec:
   interval: 1h
   releaseName: qdrant
   chartRef:
-    kind: HelmRepository
+    kind: HelmChart
     name: qdrant
     namespace: qdrant
   install:
