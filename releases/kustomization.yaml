@@ -9,3 +9,4 @@ resources:
   - mcps.yaml
   - agentregistry.yaml
   - mcp-g.yaml
+  - phoenix.yaml
