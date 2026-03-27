@@ -7,4 +7,4 @@ resources:
   - kubernetes-replicator.yaml
   - agents.yaml
   - mcps.yaml
-  - inventory.yaml
+  - agentregistry.yaml
