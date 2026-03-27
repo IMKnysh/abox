@@ -8,3 +8,4 @@ resources:
   - agents.yaml
   - mcps.yaml
   - agentregistry.yaml
+  - mcp-g.yaml
