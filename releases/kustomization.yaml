@@ -10,3 +10,4 @@ resources:
   - agentregistry.yaml
   - mcp-g.yaml
   - phoenix.yaml
+  - qdrant.yaml
