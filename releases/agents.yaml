@@ -1,14 +1,14 @@
 apiVersion: kagent.dev/v1alpha2
 kind: Agent
 metadata:
-  name: basic-adk-agent
+  name: triage-agent
   namespace: kagent
 spec:
-  description: This agent can do anything.
+  description: Ingests JSON alerts from AWS sources, labels them with source, event type, priority, and environment, then forwards enriched messages to a downstream RCA agent.
   type: BYO
   byo:
     deployment:
-      image: ghcr.io/imknysh/abox-basic-agent:latest
+      image: ghcr.io/imknysh/triage-agent:latest
       env:
         - name: GOOGLE_API_KEY
           valueFrom:
