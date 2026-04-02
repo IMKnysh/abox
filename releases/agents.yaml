@@ -19,6 +19,23 @@ spec:
 apiVersion: kagent.dev/v1alpha2
 kind: Agent
 metadata:
+  name: rca-agent
+spec:
+  description: AI-powered Root Cause Analysis agent
+  type: BYO
+  byo:
+    deployment:
+      image: ghcr.io/imknysh/rca-agent:latest
+      env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ai-providers-api-keys
+              key: OPENAI_API_KEY
+---
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
   name: k8s-a2a-agent
   namespace: kagent
 spec:
